@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobile.App.Presentation", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{07F85BC1-EB2A-4454-A2FF-F67A0281CB11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Droid", "Mobile.App.Droid\Mobile.App.Droid.csproj", "{9C058904-96C5-4FD9-8E9F-A5413CAE0540}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Android", "Mobile.App.Droid\Mobile.App.Android.csproj", "{9C058904-96C5-4FD9-8E9F-A5413CAE0540}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
