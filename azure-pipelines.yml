@@ -12,7 +12,7 @@ jobs:
 - job: Android
 
   pool:
-  vmImage: 'VS2017-Win2016'
+  vmImage: 'macOS 10.13'
 
   variables:
   buildConfiguration: 'Release'
@@ -22,11 +22,11 @@ jobs:
   - task: NuGetToolInstaller@0
 
   - task: NuGetCommand@2
-  inputs:
+    inputs:
       restoreSolution: '**/*.sln'
 
   - task: XamarinAndroid@1
-  inputs:
+    inputs:
       projectFile: '**/*droid*.csproj'
       outputDirectory: '$(outputDirectory)'
       configuration: '$(buildConfiguration)'
