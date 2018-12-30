@@ -5,29 +5,46 @@
 
 trigger:
 - master
+- develop
 
-pool:
-  vmImage: 'macOS-10.13'
+jobs:
 
-variables:
+- job: Android
+
+  pool:
+  vmImage: 'VS2017-Win2016'
+
+  variables:
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
-steps:
-- task: NuGetToolInstaller@0
+  steps:
+  - task: NuGetToolInstaller@0
 
-- task: NuGetCommand@2
+  - task: NuGetCommand@2
   inputs:
-    restoreSolution: '**/*.sln'
+      restoreSolution: '**/*.sln'
 
-- task: XamarinAndroid@1
+  - task: XamarinAndroid@1
   inputs:
-    projectFile: '**/*droid*.csproj'
-    outputDirectory: '$(outputDirectory)'
-    configuration: '$(buildConfiguration)'
+      projectFile: '**/*droid*.csproj'
+      outputDirectory: '$(outputDirectory)'
+      configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'  
+- job: Tests
+
+  pool:
+  vmImage: 'macOS 10.13'
+
+  steps:
+  - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: test
+      projects: '**/*Tests/*.csproj'
+      arguments: '--configuration $(buildConfiguration)'  
