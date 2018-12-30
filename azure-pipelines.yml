@@ -12,11 +12,11 @@ jobs:
 - job: Android
 
   pool:
-  vmImage: 'macOS 10.13'
+  vmImage: 'VS2017-Win2016'
 
   variables:
-  buildConfiguration: 'Release'
-  outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+    buildConfiguration: 'Release'
+    outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
   steps:
   - task: NuGetToolInstaller@0
@@ -30,6 +30,16 @@ jobs:
       projectFile: '**/*droid*.csproj'
       outputDirectory: '$(outputDirectory)'
       configuration: '$(buildConfiguration)'
+
+  - task: AndroidSigning@3
+    inputs:
+      apksign: false
+      zipalign: false
+      apkFiles: '$(outputDirectory)/*.apk'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(outputDirectory)'
 
 - job: Tests
 
