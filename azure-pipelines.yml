@@ -3,14 +3,9 @@
 # Add steps that test, sign, and distribute an app, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xamarin
 
-trigger:
-- master
-- develop
-
 jobs:
 
 - job: Android
-
   pool:
   vmImage: 'VS2017-Win2016'
 
