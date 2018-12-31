@@ -77,5 +77,5 @@ jobs:
   - task: PublishCodeCoverageResults@1
     inputs:
       codeCoverageTool: cobertura
-      summaryFileLocation: Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
+      summaryFileLocation: $(System.DefaultWorkingDirectory)/Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
 
