@@ -73,7 +73,8 @@ jobs:
   - task: ShellScript@2
     inputs:
       scriptPath: Mobile.App.Tests/Scripts/MacOsRunner.sh
-    #args: '' # Optional
-    #disableAutoCwd: false # Optional
-    #cwd: '' # Optional
-    #failOnStandardError: false
+
+  - task: PublishCodeCoverage@2
+    inputs:
+      Code coverage tool: Cobertura
+      Summary file: Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
