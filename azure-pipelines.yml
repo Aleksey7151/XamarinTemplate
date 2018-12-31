@@ -52,3 +52,20 @@ jobs:
       solutionFile: '**/*.sln'
       configuration: 'Release'
       buildForSimulator: true
+
+- job: Tests
+  pool:
+    vmImage: 'macOS 10.13'
+
+  steps:
+  - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: test
+      projects: '**/*Tests/*.csproj'
+      arguments: '--configuration $(buildConfiguration)'  
