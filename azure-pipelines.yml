@@ -68,4 +68,12 @@ jobs:
     inputs:
       command: test
       projects: '**/*Tests/*.csproj'
-      arguments: '--configuration $(buildConfiguration)'  
+      arguments: '--configuration $(buildConfiguration)'
+
+  - task: ShellScript@2
+    inputs:
+      scriptPath: Mobile.App.Tests/Scripts/MacOsRunner.sh
+    #args: '' # Optional
+    #disableAutoCwd: false # Optional
+    #cwd: '' # Optional
+    #failOnStandardError: false
