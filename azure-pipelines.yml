@@ -74,8 +74,8 @@ jobs:
     inputs:
       scriptPath: Mobile.App.Tests/Scripts/MacOsRunner.sh
 
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: cobertura
-    summaryFileLocation: Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: cobertura
+      summaryFileLocation: Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
 
