@@ -10,13 +10,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Android", "Mobil
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C608FC9A-DDB5-4CBA-A599-113030934A5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Presentation.Tests", "Mobile.App.Presentation.Tests\Mobile.App.Presentation.Tests.csproj", "{D301C179-2514-44B8-81D2-2EFA7D7FD5E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Presentation.Tests", "Mobile.App.Tests\Mobile.App.Presentation.Tests\Mobile.App.Presentation.Tests.csproj", "{D301C179-2514-44B8-81D2-2EFA7D7FD5E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.iOS", "Mobile.App.iOS\Mobile.App.iOS.csproj", "{80A96B52-6758-4BDB-B0B4-CEA4CA155C60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Application", "Mobile.App.Application\Mobile.App.Application.csproj", "{BCE5CE93-624A-4CD7-B22A-922ECFEC2088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Application.Tests", "Mobile.App.Application.Tests\Mobile.App.Application.Tests.csproj", "{586EA41D-EB80-4C46-8569-F12B4519B8EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.App.Application.Tests", "Mobile.App.Tests\Mobile.App.Application.Tests\Mobile.App.Application.Tests.csproj", "{586EA41D-EB80-4C46-8569-F12B4519B8EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
