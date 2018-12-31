@@ -1,50 +1,54 @@
-# Xamarin.Android
-# Build a Xamarin.Android project.
-# Add steps that test, sign, and distribute an app, save build artifacts, and more:
+# Xamarin.Android and Xamarin.iOS
+# Build a Xamarin.Android and Xamarin.iOS app.
+# Add steps that test, sign, and distribute the app, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xamarin
 
-trigger:
-- master
-- develop
+jobs:
 
-pool:
-  vmImage: 'macOS-10.13'
+- job: Android
+  pool:
+    vmImage: 'VS2017-Win2016'
 
-variables:
-  buildConfiguration: 'Release'
-  outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+  variables:
+    buildConfiguration: 'Release'
+    outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
-steps:
-- task: NuGetToolInstaller@0
+  steps:
+  - task: NuGetToolInstaller@0
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '**/*.sln'
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
 
-- task: XamariniOS@2
-  inputs:
-    solutionFile: '**/*.sln'
-    configuration: 'Release'
-    buildForSimulator: true
+  - task: XamarinAndroid@1
+    inputs:
+      projectFile: '**/*droid*.csproj'
+      outputDirectory: '$(outputDirectory)'
+      configuration: '$(buildConfiguration)'
 
-- task: XamarinAndroid@1
-  inputs:
-    projectFile: '**/*droid*.csproj'
-    outputDirectory: '$(outputDirectory)'
-    configuration: '$(buildConfiguration)'
+  - task: AndroidSigning@3
+    inputs:
+      apksign: false
+      zipalign: false
+      apkFiles: '$(outputDirectory)/*.apk'
 
-- task: AndroidSigning@3
-  inputs:
-    apksign: false
-    zipalign: false
-    apkFiles: '$(outputDirectory)/*.apk'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(outputDirectory)'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(outputDirectory)'
+- job: iOS
+  pool:
+    vmImage: 'macOS 10.13'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'  
+  steps:
+  - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+
+  - task: XamariniOS@2
+    inputs:
+      solutionFile: '**/*.sln'
+      configuration: 'Release'
+      buildForSimulator: true
