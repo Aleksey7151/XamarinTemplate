@@ -79,3 +79,5 @@ jobs:
       codeCoverageTool: cobertura
       summaryFileLocation: $(System.DefaultWorkingDirectory)/Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
 
+  - task: PublishBuildArtifacts@1
+
