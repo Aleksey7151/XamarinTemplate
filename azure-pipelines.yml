@@ -36,14 +36,18 @@ jobs:
     inputs:
       pathtoPublish: '$(outputDirectory)'
       
+  - task: DownloadSecureFile@1
+    inputs:
+      secureFile: MobileAppAlias.keystore
+      
   - task: AndroidSigning@2
     inputs:
       apkFiles: '**/*.apk'
       jarsign: true
       jarsignerKeystoreFile: MobileAppAlias.keystore
-      jarsignerKeystorePassword: 12345678
+      jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
       jarsignerKeystoreAlias: XamarinTemplateAlias
-      jarsignerKeyPassword: 12345678
+      jarsignerKeyPassword: '$(jarsignerKeyPassword)'
       zipalign: true
 
 - job: iOS
