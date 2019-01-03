@@ -35,6 +35,16 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: '$(outputDirectory)'
+      
+  - task: AndroidSigning@2
+    inputs:
+      apkFiles: '**/*.apk'
+      jarsign: true
+      jarsignerKeystoreFile: '$(Build.SourcesDirectory)/Mobile.App.Android/MobileAppKeystore/MobileAppAlias.keystore'
+      jarsignerKeystorePassword: '12345678'
+      jarsignerKeystoreAlias: 'XamarinTemplateAlias'
+      jarsignerKeyPassword: '12345678'
+      zipalign: true
 
 - job: iOS
   pool:
@@ -51,6 +61,7 @@ jobs:
     inputs:
       solutionFile: '**/*.sln'
       configuration: 'Release'
+      packageApp: false
       buildForSimulator: true
 
 - job: Tests
@@ -79,7 +90,6 @@ jobs:
       codeCoverageTool: cobertura
       summaryFileLocation: $(Build.SourcesDirectory)/Mobile.App.Tests/CodeCoverageResults/results.cobertura.xml
       reportDirectory: $(Build.SourcesDirectory)/Mobile.App.Tests/CodeCoverageResults/
-      reportTypes: HTMLInline
 
   - task: PublishBuildArtifacts@1
 
