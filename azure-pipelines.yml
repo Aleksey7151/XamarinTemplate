@@ -45,9 +45,11 @@ jobs:
       apkFiles: '**/*.apk'
       jarsign: true
       jarsignerKeystoreFile: MobileAppAlias.keystore
-      jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
+      jarsignerKeystorePassword: 12345678 
+      #$(jarsignerKeystorePassword)
       jarsignerKeystoreAlias: XamarinTemplateAlias
-      jarsignerKeyPassword: '$(jarsignerKeyPassword)'
+      jarsignerKeyPassword: 12345678
+      #$(jarsignerKeyPassword)
       zipalign: true
 
 - job: iOS
