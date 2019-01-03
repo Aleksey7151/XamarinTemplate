@@ -40,7 +40,7 @@ jobs:
     inputs:
       apkFiles: '**/*.apk'
       jarsign: true
-      jarsignerKeystoreFile: Mobile.App.Android/MobileAppKeystore/MobileAppAlias.keystore
+      jarsignerKeystoreFile: MobileAppAlias.keystore
       jarsignerKeystorePassword: 12345678
       jarsignerKeystoreAlias: XamarinTemplateAlias
       jarsignerKeyPassword: 12345678
