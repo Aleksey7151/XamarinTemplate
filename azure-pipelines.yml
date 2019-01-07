@@ -47,7 +47,7 @@ jobs:
   - task: AppCenterDistribute@1
     inputs:
       serverEndpoint: XamarinTemplateAppCenterConnection
-      appSlug: https://appcenter.ms/users/Aliaksei_Safonau/apps/Mobile.App.Android
+      appSlug: Aliaksei_Safonau/Mobile.App.Android
       appFile: '$(outputDirectory)/*.apk'
       releaseNotesOption: 'input'
       releaseNotesInput: 'Some release notes for XamarinTemplate'
