@@ -26,12 +26,6 @@ jobs:
       outputDirectory: '$(outputDirectory)'
       configuration: '$(buildConfiguration)'
 
-  - task: AndroidSigning@3
-    inputs:
-      apksign: false
-      zipalign: false
-      apkFiles: '$(outputDirectory)/*.apk'
-
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: '$(outputDirectory)'
@@ -42,13 +36,19 @@ jobs:
       
   - task: AndroidSigning@2
     inputs:
-      apkFiles: '**/*.apk'
+      apkFiles: '$(outputDirectory)/*.apk'
       jarsign: true
       jarsignerKeystoreFile: MobileAppAlias.keystore
       jarsignerKeystorePassword: $(keystorePass)
       jarsignerKeystoreAlias: XamarinTemplateAlias
       jarsignerKeyPassword: $(keystorePass)
       zipalign: true
+      
+  - task: AppCenterDistribute@1
+    inputs:
+      serverEndpoint: XamarinTemplateAppCenterConnection
+      appSlug: https://appcenter.ms/users/Aliaksei_Safonau/apps/Mobile.App.Android
+      appFile: '$(outputDirectory)/*.apk'
 
 - job: iOS
   pool:
