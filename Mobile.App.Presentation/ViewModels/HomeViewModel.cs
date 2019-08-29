@@ -8,5 +8,10 @@ namespace Mobile.App.Presentation.ViewModels
         {
             return Task.CompletedTask;
         }
+
+        public Task GetDescriptionAsync()
+        {
+            return Task.CompletedTask;
+        }
     }
 }
